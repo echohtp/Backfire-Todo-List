@@ -26,9 +26,6 @@ var Todo = Backbone.Model.extend({
 		if(!this.get('title')){
 			this.set({'title': this.defaults().title, 'completed': false});
 		}
-		this.bind('remove', function(){
-			this.destroy();
-		});
 	},
 
 	toggle: function(){
