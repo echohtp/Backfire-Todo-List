@@ -39,7 +39,13 @@ var Todo = Backbone.Model.extend({
 
 var TodoList = Backbone.Firebase.Collection.extend({
 	model: Todo,
-	firebase: new Firebase("https://<placeholder>.firebaseio.com/")
+	firebase: '',
+
+	initialize: function(){
+		var uid = localStorage.getItem('btd') || new Date().getTime();
+		localStorage.setItem('btd', uid);
+		this.firebase = new Firebase("https://<placeholder>.firebaseio.com/" + uid);
+	}
 }); 
 
 
