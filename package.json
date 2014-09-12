@@ -1,0 +1,9 @@
+{
+  "name": "Backfire Todo List",
+  "description": "A simple todo list written using backbone and firebase (backfire.js)",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+  }
+}

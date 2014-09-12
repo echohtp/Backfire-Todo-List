@@ -1,4 +1,4 @@
 Backfire-Todo-List
 ==================
 
-Backfire todo list using backbone.js and backfire.js (firebase)
+Todo list written using backbone and firebase (backfire.js)

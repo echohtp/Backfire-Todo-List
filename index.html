@@ -1,0 +1,78 @@
+<!doctype HTML>
+<head>
+	<title>Backfire todo list!</title>
+	<link rel="stylesheet" href="lib/css/bootstrap.min.css">
+
+	<style>
+	header {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	.task-details{
+		border-radius: 4px;
+	}
+
+	#todo-list { 
+		text-align: center;
+	}
+	#todoApp {
+		width: 500px;
+		text-align: center;
+	}
+
+	.footer{
+		color: #999999;
+	}
+
+	</style>
+
+</head>
+
+<body>
+	<div id="todoApp" class="center-block">
+		<h1>Backfire Todo List</h1>
+		<hr/>
+		<header>
+			<input type="text" class="task-details input-lg" placeholder="Add a new task!" size="35"/>
+		</header>
+		
+		<div>
+			<div id="todo-list"></div>
+		</div>
+	
+
+		<footer>
+			<p class="footer">Created by <br/><i><u><a href="http://github.com/echohtp" class="footer">Jason Schorr</a></u></i></p>
+		</footer>
+	</div>
+
+	
+	<script type="text/template" id="todo-entry-template">
+	<table class="table table-hover">
+	<% _.each(tasks, function(task){ %>
+		<tr>
+			<td><input type="checkbox" name="complete-task" class="check-complete" data-id="<%- task.id %>"></td> 
+			<td> <% if(task.get('completed')){ %> 
+					<s><%- task.get('title') %></s>
+				 <% } else { %>
+				 	<%- task.get('title') %>
+				 <% } %>
+			</td>
+			<td><button class="btn btn-danger button-delete" data-id="<%- task.id %>">Remove</button></td>
+		</tr>
+	<% }); %>
+	</table>	
+	</script>
+
+
+	<script type="text/javascript" src="lib/js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="lib/js/underscore.js"></script>
+	<script type="text/javascript" src="lib/js/backbone.js"></script>
+	<script type="text/javascript" src="lib/js/firebase.js"></script>
+	<script type="text/javascript" src="lib/js/backbone-firebase.js"></script>
+	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/todo.js"></script>
+	
+</body>
+</html>
