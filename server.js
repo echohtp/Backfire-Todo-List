@@ -8,7 +8,6 @@ var request = require('request');
 
 /* predeclaring functions */
 
-// function to keep a active list of playlists
 
 
 /* end of predeclarations */
@@ -18,34 +17,16 @@ var request = require('request');
 
 
 app.use("css", express.static('./css'));
+app.use('lib/', express.static('./lib/'));
+app.use('lib/js', express.static('./lib/js'));
+app.use('lib/css', express.static('./lib/css'));
 app.use("js", express.static('./js'));
 app.use("img", express.static('./img'));
 app.use("/", express.static('./'));
 
 
-/* setup function handlers for routes */
-
-var listTodos = function(req, res){
-
-};
-
-var todoDetails = function(req, res){};
-
-var deleteTodo = function(req, res){};
-var createTodo = function(req, res){};
-var updateTodo = function(req, res){};
 
 /* End functions for routes */
-
-
-
-
-app.get('/todos', listTodos);
-app.get('/todos/:id', todoDetails);
-app.delete('/todos/:id', deleteTodo);
-app.post('/todos', createTodo);
-app.put('/todos/:id', updateTodo);
-
 
 /*
   To Run server on port 3000:
