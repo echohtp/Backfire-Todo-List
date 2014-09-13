@@ -51,15 +51,16 @@
 	<script type="text/template" id="todo-entry-template">
 	<table class="table table-hover">
 	<% _.each(tasks, function(task){ %>
+		<% if (task.get('completed')){ %>
+		<tr>
+			<td><input type="checkbox" name="complete-task" class="check-complete" data-id="<%- task.id %>" checked></td> 
+			<td><s><%- task.get('title') %></s></td>
+		<% }else{ %> 
 		<tr>
 			<td><input type="checkbox" name="complete-task" class="check-complete" data-id="<%- task.id %>"></td> 
-			<td> <% if(task.get('completed')){ %> 
-					<s><%- task.get('title') %></s>
-				 <% } else { %>
-				 	<%- task.get('title') %>
-				 <% } %>
-			</td>
-			<td><button class="btn btn-danger button-delete" data-id="<%- task.id %>">Remove</button></td>
+			<td><%- task.get('title') %></td>
+		<% } %>
+		<td><button class="btn btn-danger button-delete" data-id="<%- task.id %>">Remove</button></td>
 		</tr>
 	<% }); %>
 	</table>	
