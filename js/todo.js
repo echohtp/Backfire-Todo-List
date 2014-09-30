@@ -73,9 +73,28 @@ var TodoListView = Backbone.View.extend({
 		task.toggle();
 	},
 
+	editTask: function(ev){
+		console.log('edit area');
+		var modelId = $(ev.currentTarget).data('id');
+		$('span[name="task-details-static"][data-id="' + modelId + '"]').hide();
+		$('input[name="task-details-edit"][data-id="' + modelId + '"]').show();
+
+		$('input[name="task-details-edit"][data-id="' + modelId + '"]').focus();
+		
+		$('input[name="task-details-edit"][data-id="' + modelId + '"]').blur(function(){
+			$('span[name="task-details-static"][data-id="' + modelId + '"]').show();
+			$('input[name="task-details-edit"][data-id="' + modelId + '"]').hide();
+
+			var model = todoList.get(modelId);
+			model.set('title', $('input[name="task-details-edit"][data-id="' + modelId + '"]').val());
+		});
+
+	},
+
 	events:{
 		'click .button-delete' : 'removeTask',
-		'click .check-complete' : 'doneTask'
+		'click .check-complete' : 'doneTask',
+		'click span[name="task-details-static"]' : 'editTask'
 	}
 
 });
